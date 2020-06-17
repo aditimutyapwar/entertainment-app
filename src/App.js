@@ -3,6 +3,7 @@ import Search from './components/searchComponent/Search';
 import Results from './components/resultsComponent/Results';
 import MovieDetails from './components/movieDetailsComponent/MovieDetails';
 import Carousel from './components/carouselComponent/Carousel';
+import Label from './components/genreLabelComponent/GenreLabel';
 import axios from 'axios';
 
 const App = () => {
@@ -12,12 +13,21 @@ const App = () => {
   const [error, setError] = useState('');
   const [currIndex, setCurrIndex] = useState(0);
   const [popularResult, setPopularResult] = useState([]);
+  const [genreResult, setGenreResult] = useState([]);
 
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios('https://api.themoviedb.org/3/trending/all/day?api_key=4eb033efceb27677c3831bf9be768992');
       setPopularResult(result.data.results);
+      };
+      fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios('https://api.themoviedb.org/3/genre/movie/list?api_key=4eb033efceb27677c3831bf9be768992&language=en-US');
+      setGenreResult(result.data.genres);
       };
       fetchData();
   }, []);
@@ -34,6 +44,17 @@ const App = () => {
       });
     };
   }; 
+
+  const searchByGenre = (id) => {
+    axios('https://api.themoviedb.org/3/discover/movie?api_key=4eb033efceb27677c3831bf9be768992&with_genres='+ id).then( ({ data }) => {
+        let results = data.results;
+        setResults(results);
+        setError('');
+      }).catch(err => {
+        setResults([]);
+        setError('please enter keyword to search');
+      });
+  }
 
   const handleInputVal = (e) => { 
     let keyword = e.target.value;
@@ -73,6 +94,9 @@ const App = () => {
           <h1>MOVIE SEARCH DB</h1>
         </header>
         <main className="main">
+        <Label 
+            genreResult={genreResult} 
+            searchByGenre={searchByGenre}/>
         <Search 
             handleInputVal={handleInputVal}
             search={search}

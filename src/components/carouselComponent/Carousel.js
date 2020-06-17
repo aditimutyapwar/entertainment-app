@@ -6,7 +6,7 @@ const Carousel = ({ previousSlide, nextSlide, popularResult, currIndex, movieDet
   
   return (
     <div className={classes.carousel}>
-      <h2>Popular Movies...</h2>
+      <h2>TRENDING MOVIES OF THE DAY..</h2>
     <Arrow
       direction="left"
       clickFunction={ previousSlide }
@@ -15,6 +15,16 @@ const Carousel = ({ previousSlide, nextSlide, popularResult, currIndex, movieDet
     <ImageSlide 
       currPopular={ popularResult[currIndex]} 
       movieDetails={movieDetails} />
+    <ImageSlide 
+      currPopular={ popularResult[currIndex + 1]} 
+      movieDetails={movieDetails} />
+    <ImageSlide 
+      currPopular={ popularResult[currIndex + 2]} 
+      movieDetails={movieDetails} />
+    <ImageSlide 
+      currPopular={ popularResult[currIndex + 3]} 
+      movieDetails={movieDetails} />
+
 
     <Arrow
       direction="right"
