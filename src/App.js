@@ -5,13 +5,6 @@ import MovieDetails from './components/movieDetailsComponent/MovieDetails';
 import axios from 'axios';
 
 const App = () => {
-
-  /*const [state, setState] = useState({ // we are using hooks and giving 
-    s:"", // a string to search the movie you are looking for
-    results: [], // where we want to put our search results into
-    selected: {} // when selecting a SPECIFIC movie - we want to see a everything that has to do with that movie
-  });*/
-  
   const [searchVal, setSearchVal] = useState("");
   const [results, setResults] = useState([]);
   const [selected, setSelected] = useState({});
@@ -63,7 +56,7 @@ const App = () => {
             movieDetails={movieDetails}
             error={error}
           />
-          {(typeof selected.title != "undefined") ? <MovieDetails selected={selected} closeMovieDetails={closeMovieDetails} /> : false}
+          <MovieDetails selected={selected} closeMovieDetails={closeMovieDetails} />
         </main>
     </div>
   );
