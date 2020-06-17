@@ -1,0 +1,33 @@
+.result{ 
+  margin: 20px;
+}
+
+.result{
+  width: 5%;
+  min-width: 250px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.result img{
+  display: block;
+  width: 100%;
+}
+
+.result h3{
+  background: rgb(124, 124, 124);;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+  transition: 0.4s ease-out;
+  height: 64px;
+  text-align: center;
+}
+
+.result:hover h3{
+  background: black;
+  color: rgb(124, 124, 124);;
+}

@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Search from './components/searchComponent/Search';
+import Results from './components/resultsComponent/Results';
+import MovieDetails from './components/movieDetailsComponent/MovieDetails';
+import axios from 'axios';
 
-function App() {
+const App = () => {
+
+  /*const [state, setState] = useState({ // we are using hooks and giving 
+    s:"", // a string to search the movie you are looking for
+    results: [], // where we want to put our search results into
+    selected: {} // when selecting a SPECIFIC movie - we want to see a everything that has to do with that movie
+  });*/
+  
+  const [searchVal, setSearchVal] = useState("");
+  const [results, setResults] = useState([]);
+  const [selected, setSelected] = useState({});
+  const [error, setError] = useState('');
+  
+  const search = (e) => {
+    if(e.key === "Enter"){ 
+      axios('https://api.themoviedb.org/3/search/movie?api_key=4eb033efceb27677c3831bf9be768992&page=1&query='+ searchVal).then( ({ data }) => {
+        let results = data.results;
+        setResults(results);
+        setError('');
+      }).catch(err => {
+        setResults([]);
+        setError('please enter keyword to search');
+      });
+    };
+  }; 
+
+  const handleInputVal = (e) => { 
+    let keyword = e.target.value;
+    setSearchVal(keyword);
+  };
+
+  const movieDetails = (id) => {
+    axios('https://api.themoviedb.org/3/movie/'+id+'?api_key=4eb033efceb27677c3831bf9be768992&language=en-US').then( ({ data }) => {
+      let result = data;
+
+      setSelected(result);
+
+    });
+  };
+
+  const closeMovieDetails = () => {
+    setSelected({})
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <header className="header">
+          <h1>MOVIE APP</h1>
+        </header>
+        <main className="main">
+          <Search 
+            handleInputVal={handleInputVal}
+            search={search}
+          />
+          <Results 
+            results={results} 
+            movieDetails={movieDetails}
+            error={error}
+          />
+          {(typeof selected.title != "undefined") ? <MovieDetails selected={selected} closeMovieDetails={closeMovieDetails} /> : false}
+        </main>
     </div>
   );
-}
+};
 
-export default App;
+export default App; 
