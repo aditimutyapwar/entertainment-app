@@ -1,12 +1,26 @@
-.movieDetails{
+  .content {
+      position: fixed;
+      z-index: 500;
+      background-color: white;
+      width: 70%;
+      border: 1px solid #ccc;
+      box-shadow: 1px 1px 1px black;
+      padding: 16px;
+      right: 25%;
+      top: 23%;
+      box-sizing: border-box;
+      transition: all 0.3s ease-out;
+  } 
+
+  .Backdrop {
+    width: 100%;
+    height: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(192, 192, 188);
-    overflow-y: scroll;
-  }
+    z-index: 100;
+    left:0;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
   
   .movieDetails .content{
     display: block;
@@ -42,12 +56,12 @@
   
   .movieDetails .content .overview img {
     max-width: 300px;
-    padding: 0px 15px;
+    margin: 15px 15px;
   }
   
   .movieDetails .content .overview p{
     flex: 1 1 50%;
-    padding: 15px;
+    margin: 15px;
   }
   
   .movieDetails .content .close{
@@ -55,9 +69,8 @@
     padding: 15px 30px;
     font-size: 18px;
     font-weight: 700;
-  
     background: #44c484;
-    color: #223343;
+    color: #646464;;
     border-radius: 8px;
     border: none;
     outline: none;
@@ -67,6 +80,6 @@
   }
   
   .movieDetails .content .close:hover{
-    background: #223343;
+    background: #646464;
     color: #44c484;
   }

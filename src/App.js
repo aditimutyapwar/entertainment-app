@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div className="App">
         <header className="header">
-          <h1>MOVIE APP</h1>
+          <h1>MOVIE SEARCH DB</h1>
         </header>
         <main className="main">
           <Search 
@@ -56,7 +56,7 @@ const App = () => {
             movieDetails={movieDetails}
             error={error}
           />
-          <MovieDetails selected={selected} closeMovieDetails={closeMovieDetails} />
+          {(typeof selected.title != "undefined") ? <MovieDetails selected={selected} closeMovieDetails={closeMovieDetails}/> : false }
         </main>
     </div>
   );

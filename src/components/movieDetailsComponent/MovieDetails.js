@@ -6,6 +6,7 @@ const MovieDetails = ({ selected, closeMovieDetails }) => {
     
     return(
        <section className={classes.movieDetails}>
+           <div className={classes.Backdrop} onClick={closeMovieDetails}></div>
            <div className={classes.content}>
            <h2> 
                 {selected.title}
