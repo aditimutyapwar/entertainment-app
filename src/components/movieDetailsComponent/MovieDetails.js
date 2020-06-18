@@ -16,7 +16,6 @@ const MovieDetails = ({ selected, closeMovieDetails }) => {
                 </p>
                 <div className={classes.overview}>
                 <img src={img_src} alt='movie_poster'/>
-                
                 <p> {selected.overview} </p>
                 </div>
                 <button className={classes.close} onClick={closeMovieDetails}> Close </button>

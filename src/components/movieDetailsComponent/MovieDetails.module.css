@@ -1,10 +1,9 @@
   .content {
       position: fixed;
       z-index: 500;
-      background-color: white;
+      background-color: cadetblue;
       width: 70%;
-      border: 1px solid #ccc;
-      box-shadow: 1px 1px 1px black;
+      box-shadow: 0px 0px 8px 3px black;
       padding: 16px;
       right: 25%;
       top: 23%;
@@ -36,14 +35,10 @@
     font-weight: 600;
   }   
   
-  .movieDetails .content h2 span{
-    font-weight: 300;
-    font-size: 20px;
-  
-  }
-  
   .movieDetails .content .rating{
     margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
   }
   
   .movieDetails .content .overview{
@@ -51,7 +46,7 @@
     flex-wrap: wrap;
     margin: 0px 15px 30px;
     font-size: 22px;
-  
+    text-align: justify;
   }
   
   .movieDetails .content .overview img {
@@ -69,8 +64,8 @@
     padding: 15px 30px;
     font-size: 18px;
     font-weight: 700;
-    background: #44c484;
-    color: #646464;;
+    background: black;
+    color: white;;
     border-radius: 8px;
     border: none;
     outline: none;
@@ -81,5 +76,5 @@
   
   .movieDetails .content .close:hover{
     background: #646464;
-    color: #44c484;
+    color: black;
   }

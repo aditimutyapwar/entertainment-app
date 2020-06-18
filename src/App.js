@@ -91,23 +91,23 @@ const App = () => {
   return (
     <div className="App">
         <header className="header">
-          <h1>MOVIE SEARCH DB</h1>
+          <h1>MOVIE SEARCH</h1>
         </header>
         <main className="main">
-        <Label 
-            genreResult={genreResult} 
-            searchByGenre={searchByGenre}/>
-        <Search 
-            handleInputVal={handleInputVal}
-            search={search}
-          />
+        
         <Carousel 
             previousSlide={previousSlide}
             nextSlide={nextSlide}
             popularResult={popularResult}
             currIndex={currIndex}
             movieDetails={movieDetails} />
-          <hr />
+          <Label 
+            genreResult={genreResult} 
+            searchByGenre={searchByGenre}/>
+          <Search 
+            handleInputVal={handleInputVal}
+            search={search}
+          />
           <Results 
             results={results} 
             movieDetails={movieDetails}
